@@ -5,6 +5,7 @@ Cada pasta trata de um assunto e abre com um `README.md` que lista o que ela gua
 | Pasta | O que guarda |
 | --- | --- |
 | [requirements/](requirements/README.md) | O SRS versionado: requisitos, regras de negócio e questões abertas |
+| [architecture/](architecture/README.md) | O mapa do sistema: blocos, cenários, implantação e conceitos transversais |
 | [decisions/](decisions/README.md) | Os ADRs, com o motivo de cada decisão que cruza áreas |
 | [research/](research/README.md) | O pré-registro do experimento do artigo |
 
