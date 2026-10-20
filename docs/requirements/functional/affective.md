@@ -2,6 +2,8 @@
 
 A inferência de expressão facial, onde ela fica guardada e como é exposta.
 
+![Casos de uso](../diagrams/use-cases-affective.drawio.svg)
+
 <a id="fr-aff-01"></a>
 ## FR-AFF-01 — Inferir expressão facial
 

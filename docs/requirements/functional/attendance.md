@@ -3,6 +3,8 @@
 A sessão de chamada numa câmera, a presença construída sobre os eventos de reconhecimento do núcleo e a
 tela que acompanha a sessão na demonstração.
 
+![Casos de uso](../diagrams/use-cases-attendance.drawio.svg)
+
 <a id="fr-att-01"></a>
 ## FR-ATT-01 — Abrir sessão de chamada
 

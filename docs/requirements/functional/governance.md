@@ -2,6 +2,8 @@
 
 O rastro que toda operação sobre dado biométrico deixa.
 
+![Casos de uso](../diagrams/use-cases-governance.drawio.svg)
+
 <a id="fr-gov-01"></a>
 ## FR-GOV-01 — Auditar operação biométrica
 

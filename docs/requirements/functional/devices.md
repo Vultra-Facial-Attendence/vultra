@@ -2,6 +2,8 @@
 
 O ciclo de vida de uma ESP32-CAM e como uma captura é disparada.
 
+![Casos de uso](../diagrams/use-cases-devices.drawio.svg)
+
 <a id="fr-dev-01"></a>
 ## FR-DEV-01 — Registrar câmera
 

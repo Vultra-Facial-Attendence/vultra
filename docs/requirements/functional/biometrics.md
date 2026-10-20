@@ -2,6 +2,8 @@
 
 Como um rosto entra na galeria, o que impede um quadro ruim ou falso de entrar, e como ele sai.
 
+![Casos de uso](../diagrams/use-cases-biometrics.drawio.svg)
+
 <a id="fr-bio-01"></a>
 ## FR-BIO-01 — Cadastrar rosto pela câmera
 

@@ -2,6 +2,8 @@
 
 Quem autentica no sistema. Só o gestor autentica; a pessoa reconhecida não opera o sistema.
 
+![Casos de uso](../diagrams/use-cases-access.drawio.svg)
+
 <a id="fr-acc-01"></a>
 ## FR-ACC-01 — Autenticar gestor
 

@@ -2,6 +2,8 @@
 
 O que cada captura de reconhecimento deixa registrado.
 
+![Casos de uso](../diagrams/use-cases-recognition.drawio.svg)
+
 <a id="fr-rec-01"></a>
 ## FR-REC-01 — Registrar evento de reconhecimento
 

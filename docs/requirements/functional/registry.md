@@ -2,6 +2,8 @@
 
 Como as pessoas passam a existir no sistema para poderem ter o rosto cadastrado.
 
+![Casos de uso](../diagrams/use-cases-registry.drawio.svg)
+
 <a id="fr-reg-01"></a>
 ## FR-REG-01 — Criar pessoa
 
