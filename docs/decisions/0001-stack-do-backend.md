@@ -54,20 +54,17 @@ Bibliotecas do serviço, todas com versão exata:
 | Upload de arquivo | `@fastify/multipart` 10.1.4 |
 | Validação e esquemas | `zod` 4.6.7, pelo `StandardSchemaValidationPipe` do Nest |
 | Configuração | `@nestjs/config` 12.0.1, com o ambiente validado por esquema `zod` |
-| Autenticação | `@nestjs/authentication` 0.1.1: sessão por cookie para pessoas, chave de API para câmeras |
+| Autenticação | `@nestjs/authentication` 0.1.1: sessão por cookie para o gestor, chave de API para câmeras |
 | Autorização | `@nestjs/authorization` 0.1.0: política por rota, nega por padrão |
 | Banco | `@nestjs/typeorm` 12.0.2, `typeorm` 1.1.2, `pg` 8.23.1, coluna `vector` nativa |
-| Contexto de instituição e transação | `nestjs-cls` 7.0.1, `@nestjs-cls/transactional` 4.0.1, `@nestjs-cls/transactional-adapter-typeorm` 2.0.1 |
 | Redis | `ioredis` 6.0.0 |
 | Cota | `@nestjs/throttler` 6.7.1, com armazenamento próprio no Redis |
-| Filas | `@nestjs/bullmq` 12.0.0, `bullmq` 6.3.19 |
 | Canal da câmera | `@nestjs/websockets` 12.2.0, `@nestjs/platform-ws` 12.2.0, `ws` 8.22.0 |
 | Worker de inferência | `@nestjs/microservices` 12.2.0, `@grpc/grpc-js` 1.14.6, `@grpc/proto-loader` 0.8.1 |
 | Contrato gRPC | `.proto` versionado, tipos gerados por `ts-proto` 2.18.0 via `@bufbuild/buf` 1.74.0 |
 | Log | `nestjs-pino` 5.3.1, `pino` 10.4.0, `pino-http` 11.0.0 |
 | Saúde | `@nestjs/terminus` 12.1.0 |
 | OpenAPI | `@nestjs/swagger` 12.0.2, com `@fastify/static` 10.1.6 para a interface |
-| Importação de planilha | `csv-parse` 7.0.3 |
 | Testes | `@nestjs/testing` 12.2.0, `@testcontainers/postgresql` 12.2.1, `@testcontainers/redis` 12.2.1 |
 | Tipos | `@types/node` 26.6.5, `@types/pg` 8.23.1, `@types/ws` 8.18.2 |
 
@@ -76,9 +73,8 @@ partir do mesmo `.proto`.
 
 A forma de usar cada peça segue o que a prova verificou:
 
-- RLS: o serviço conecta ao banco com um papel sem superusuário e sem `BYPASSRLS`. Cada operação
-  sob RLS roda dentro de `@Transactional`, que fixa a instituição com
-  `set_config('app.institution_id', $1, true)`. As migrations rodam com um papel privilegiado, que cria a
+- Banco: o serviço conecta com um papel sem superusuário. Uma escrita que grava mais de uma tabela
+  roda em `DataSource.transaction` do TypeORM. As migrations rodam com um papel privilegiado, que cria a
   extensão `vector`, a partir do `dist` pelo CLI do TypeORM.
 - Cota: o cliente do Redis da cota usa `enableOfflineQueue: false` e `maxRetriesPerRequest: 0`.
   Uma falha no Redis responde `503`. Uma cota estourada responde `429`.
@@ -86,8 +82,6 @@ A forma de usar cada peça segue o que a prova verificou:
   `WsAdapter` decide pelo conteúdo: começa em `FF D8`, é quadro JPEG; caso contrário, é JSON.
 - Inferência: cada chamada ao worker leva um prazo (`deadline`). A chamada vencida falha no serviço,
   e o worker não fica esperando resposta.
-- Filas: um job carrega identificadores, nunca o quadro, porque o dado de um job fica gravado no Redis. O
-  Redis roda com `maxmemory-policy noeviction`.
 
 ## Consequências
 
@@ -117,8 +111,11 @@ A forma de usar cada peça segue o que a prova verificou:
   e passou em toda a prova. O `@nestjs/platform-node` ainda não existe.
 - Passport para autenticação: o Nest 12 ensina autenticação com `@nestjs/authentication`, que já
   traz sessão, hash de senha e chave de API.
-- `@nestjs/cqrs`: os fluxos do sistema são diretos. O trabalho assíncrono, como a importação de
-  planilhas, vai para filas BullMQ.
+- `@nestjs/cqrs`: os fluxos do sistema são diretos.
+- BullMQ: nenhum requisito tem trabalho assíncrono. O cadastro, o reconhecimento e o disparo de captura
+  são síncronos ou passam pelo canal da câmera.
+- `nestjs-cls` com `@nestjs-cls/transactional`: servia para fixar a instituição do RLS em cada
+  transação. O sistema atende uma instalação só, e a transação do próprio TypeORM basta.
 - Jest: o Vitest roda TypeScript ESM sem configuração extra e já injeta dependências pelos tipos
   dos construtores.
 - pnpm e npm como gerenciador: o pnpm ficou fora por escolha do time. O npm é a saída se o Bun falhar
