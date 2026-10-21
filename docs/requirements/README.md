@@ -91,6 +91,6 @@ Todos foram aprovados por Theo em 2026-10-20.
 | --- | --- | --- |
 | [BR-01](business-rules.md#br-01) | Imagem facial nunca é persistida | approved |
 | [BR-02](business-rules.md#br-02) | Um rosto por quadro | approved |
-| [BR-03](business-rules.md#br-03) | Só dados dos autores, públicos e sintéticos | approved |
+| [BR-03](business-rules.md#br-03) | Só dados do autor, públicos e sintéticos | approved |
 | [BR-04](business-rules.md#br-04) | Emoção individual só na tela ao vivo | approved |
 | [BR-05](business-rules.md#br-05) | Dado cadastral mínimo | approved |

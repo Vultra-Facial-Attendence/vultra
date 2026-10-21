@@ -36,11 +36,11 @@ Um quadro com mais de um rosto é recusado e não gera cadastro nem reconhecimen
   o motivo e nenhum evento de reconhecimento com pessoa é gravado.
 
 <a id="br-03"></a>
-## BR-03 — Só dados dos autores, públicos e sintéticos
+## BR-03 — Só dados do autor, públicos e sintéticos
 
 Enquanto [OQ-02](open-questions.md#oq-02) e [OQ-04](open-questions.md#oq-04) estiverem abertas, as
-únicas pessoas reais cujo rosto entra no sistema são Theo Odawara e Vinicius Larsen. Todo o resto vem
-de datasets públicos ou é sintético.
+única pessoa real cujo rosto entra no sistema é Theo Odawara. Todo o resto vem de datasets públicos
+ou é sintético.
 
 | Atributo | Valor |
 | --- | --- |
@@ -51,7 +51,7 @@ de datasets públicos ou é sintético.
 
 **Critérios de aceite**
 - **BR-03.1** — Dado qualquer ambiente do sistema, quando se lista a origem dos cadastros biométricos,
-  então cada um vem de um dos dois autores, de um dataset público identificado ou de geração sintética.
+  então cada um vem do autor, de um dataset público identificado ou de geração sintética.
 
 <a id="br-04"></a>
 ## BR-04 — Emoção individual só na tela ao vivo

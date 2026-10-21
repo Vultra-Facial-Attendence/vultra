@@ -6,7 +6,7 @@ Um item sem issue própria é rastreado pelo ADR ou pela questão aberta indicad
 | --- | --- | --- |
 | O conteúdo do artigo não foi confirmado com o orientador | A prioridade de todo o SRS pode mudar | [OQ-01](../requirements/open-questions.md#oq-01) |
 | A latência máxima não tem número | NFR-PERF-01 e 02 não podem ser verificados | [OQ-03](../requirements/open-questions.md#oq-03) |
-| Não há base legal decidida para dado biométrico e de emoção | Nenhuma pessoa fora do time pode entrar no sistema | [OQ-04](../requirements/open-questions.md#oq-04) |
+| Não há base legal decidida para dado biométrico e de emoção | Nenhuma pessoa além do autor pode entrar no sistema | [OQ-04](../requirements/open-questions.md#oq-04) |
 | Com a câmera ligada, o rádio da ESP32-CAM não sustenta o canal com sinal pior que cerca de -60 dBm | A câmera instalada longe do ponto de acesso não entrega quadro | medido no repositório anterior |
 | O tempo de reconexão da câmera depois de uma queda de rede não foi medido | Se for longo, o firmware precisa de outra política de reconexão | medido no repositório anterior, sem número |
 | Os pesos do `buffalo_l` só podem ser usados em pesquisa não comercial | O sistema não pode ser vendido sem licenciar ou trocar o modelo de vetor | [worker](building-blocks/worker.md) |

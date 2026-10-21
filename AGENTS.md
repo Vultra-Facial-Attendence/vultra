@@ -149,8 +149,8 @@ ESP32-CAM ──WebSocket sobre TLS──▶ apps/api ──gRPC──▶ apps/w
 
 - O backlog vive no GitHub Project "Vultra" da org `Vultra-Facial-Attendence`.
 - O sprint dura uma semana.
-- Todo trabalho nasce de uma issue, que é assignada antes do primeiro commit. São duas pessoas, então
-  ninguém começa algo que outra pessoa já anunciou num PR ou numa branch remota.
+- Todo trabalho nasce de uma issue, que é assignada antes do primeiro commit. O projeto tem um
+  autor só, Theo, e nenhum outro integrante revisa o trabalho.
 - Um requisito novo ou alterado passa pelo controle de mudança de `docs/requirements/`.
 
 ---

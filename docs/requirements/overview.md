@@ -4,10 +4,10 @@
 
 | Stakeholder | Quem é | Relação com o sistema |
 | --- | --- | --- |
-| **Time** | Theo Odawara e Vinicius Larsen | Autores do sistema e do artigo; únicos com acesso ao repositório |
+| **Autor** | Theo Odawara | Autor do sistema e do artigo; único com acesso ao repositório |
 | **Orientador** | Supervisão acadêmica da Iniciação Científica | Valida a direção da pesquisa e o conteúdo do artigo |
 | **Banca e público da demonstração** | Quem assiste à demonstração ao vivo | Vê a câmera reconhecer e a presença aparecer na tela |
-| **Gestor** | Quem opera o sistema, na prática um dos autores | Cadastra pessoas e câmeras, dispara capturas, abre a sessão de chamada |
+| **Gestor** | Quem opera o sistema, na prática o autor | Cadastra pessoas e câmeras, dispara capturas, abre a sessão de chamada |
 | **Pessoa reconhecida** | Titular do dado biométrico e de emoção | Não opera o sistema; é reconhecida pela câmera |
 
 ## Ambiente operacional
@@ -24,8 +24,9 @@
 - **Prazo.** O alvo é dezembro de 2026; o limite é meados de 2027.
 - **Ordem de construção.** E1 antes de E2. Nada da tela começa antes de o núcleo funcionar de ponta a
   ponta.
-- **Duas pessoas.** O portão de qualidade é automático; conclusão não é auto-declarada.
-- **Dados.** Só os dos autores, públicos e sintéticos ([BR-03](business-rules.md#br-03)).
+- **Uma pessoa.** Não há revisão de um segundo integrante, então o portão de qualidade é automático e
+  conclusão não é auto-declarada.
+- **Dados.** Só os do autor, públicos e sintéticos ([BR-03](business-rules.md#br-03)).
 - **Segurança e desempenho não são adiados por prazo.** As proteções do E1 nascem com o núcleo.
 
 ## Premissas e dependências
@@ -38,5 +39,5 @@
   registrar nele.
 - **A avaliação com dataset público não passa pela câmera.** Ela depende de um harness de pesquisa,
   fora deste SRS.
-- **Uso com pessoas fora do time depende de decisão ética e de base legal**, e nenhuma das duas existe
+- **Uso com pessoas além do autor depende de decisão ética e de base legal**, e nenhuma das duas existe
   ([OQ-02](open-questions.md#oq-02), [OQ-04](open-questions.md#oq-04)).
