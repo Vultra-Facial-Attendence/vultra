@@ -9,6 +9,8 @@ restante sai da medição de [OQ-03](../requirements/open-questions.md#oq-03).
 | Gravar evento de reconhecimento | Escreve Evento e Registro de auditoria | — | Um por captura |
 | Criar cadastro biométrico | Escreve Cadastro e Registro de auditoria | Pessoa sem cadastro | Um por pessoa |
 | Revogar cadastro biométrico | Escreve Cadastro e Registro de auditoria | Pessoa | Esporádico |
+| Autenticar gestor | Lê Gestor e escreve Sessão do gestor | E-mail | Um por login, até 5 por IP a cada 900 s |
+| Ler a sessão do gestor | Lê Sessão do gestor com o Gestor | Id da sessão | Um por requisição autenticada |
 | Autenticar câmera | Lê Câmera | Chave | Um no handshake e um por mensagem |
 | Criar pessoa | Escreve Pessoa | Unicidade do identificador externo | Até 10.000 |
 | Abrir sessão de chamada (E2) | Escreve Sessão | Nenhuma sessão aberta na câmera | Uma por demonstração |

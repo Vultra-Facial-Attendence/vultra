@@ -13,4 +13,5 @@ Um item sem issue própria é rastreado pelo ADR ou pela questão aberta indicad
 | A robustez do par MiniFASNetV2 e MiniFASNetV1SE depende do modelo da câmera e da cena | A taxa de bloqueio de ataque na ESP32-CAM pode ser baixa | [worker](building-blocks/worker.md) |
 | A autenticação e a autorização da API dependem de pacotes 0.x do Nest | Uma atualização pode quebrar a API dos pacotes | [0001](../decisions/0001-stack-do-backend.md) |
 | O `typescript` fica em 6.0.3 até o `@nestjs/cli` suportar a 7 | A troca para o TypeScript 7 fica parada | [0001](../decisions/0001-stack-do-backend.md) |
+| O contador de tentativas de login fica na memória da API | Um restart zera o contador, e duas instâncias contariam separado | [spec do acesso do gestor](../specs/3-manager-access/manager-session.md) |
 | Não existe CI nem proteção de branch | Todo gate depende da máquina de quem desenvolve | [0003](../decisions/0003-repositorio-e-infraestrutura.md) |
