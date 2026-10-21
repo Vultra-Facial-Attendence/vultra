@@ -38,8 +38,9 @@ privilegiado do banco.
 - Todo trabalho sai de uma branch cortada da `staging` e volta por Pull Request. A `main` recebe a
   release por merge commit.
 - O CI roda os gates de cada área no GitHub Actions, com filtro de caminho
-  ([0003](../decisions/0003-repositorio-e-infraestrutura.md)). Ainda não existe nenhum workflow. Os
-  primeiros, o dos gates do `apps/api` e o do `gitleaks` sobre o histórico inteiro, vêm do
-  [acesso do gestor](../specs/3-manager-access/manager-session.md).
+  ([0003](../decisions/0003-repositorio-e-infraestrutura.md)). O `api.yml` roda o `check` e o `build`
+  do `apps/api` em todo Pull Request que muda a área, o `bun.lock` ou o `package.json` da raiz. O
+  `secrets.yml` roda o `gitleaks` sobre o histórico inteiro em todo Pull Request. As outras áreas ainda
+  não têm workflow.
 - As branches não têm proteção configurada. A regra de Pull Request é uma convenção.
 - As dependências são atualizadas à mão, com `bun outdated` e `uv`.

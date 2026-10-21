@@ -21,7 +21,8 @@ Antes de afirmar que algo existe, confira aqui. O repositório começou do zero 
   `manager:create`. Os outros módulos de área ainda não existem.
 - O `infra/compose.dev.yaml` sobe só o PostgreSQL. O Redis entra no épico C.
 - `apps/web` e `proto` ainda não existem.
-- Não existe workflow de CI. O ADR 0003 decidiu que ele existirá.
+- O CI tem dois workflows: `api.yml`, com os gates do `apps/api`, e `secrets.yml`, com o `gitleaks`
+  sobre o histórico inteiro em todo Pull Request. As outras áreas ainda não têm workflow.
 - Nenhuma branch tem proteção configurada. A regra de branch abaixo é uma convenção.
 
 Se um agente encontrar algum desses itens já resolvido, ele confere no repositório antes de acreditar.

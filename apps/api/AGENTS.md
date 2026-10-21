@@ -33,7 +33,8 @@ migrations criar.
 ## Comandos
 
 Todos executados dentro de `apps/api`. O `bun run check` roda os gates na ordem: `typecheck`, `format`, `lint`
-e `test`. No VS Code, é a tarefa `api: check`. O `build` fica fora dele.
+e `test`. No VS Code, é a tarefa `api: check`. O `build` fica fora dele. O `.github/workflows/api.yml`
+roda os dois em todo Pull Request que muda a área.
 
 ```
 bun install
