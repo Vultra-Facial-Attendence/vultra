@@ -7,8 +7,9 @@ Cada pasta trata de um assunto e abre com um `README.md` que lista o que ela gua
 | [requirements/](requirements/README.md) | O SRS versionado: requisitos, regras de negócio e questões abertas |
 | [architecture/](architecture/README.md) | O mapa do sistema: blocos, cenários, implantação e conceitos transversais |
 | [data-model/](data-model/README.md) | Entidades, relações, padrões de acesso e armazenamento |
+| [roadmap/](roadmap/README.md) | Os milestones com os épicos, a cobertura dos requisitos e cada sprint |
 | [decisions/](decisions/README.md) | Os ADRs, com o motivo de cada decisão que cruza áreas |
-| [research/](research/README.md) | O pré-registro do experimento do artigo |
+| [research/](research/README.md) | O pré-registro do experimento do artigo e o levantamento de vivacidade |
 
 O design das telas entra em `design/` quando as telas forem feitas no Claude Design.
 
