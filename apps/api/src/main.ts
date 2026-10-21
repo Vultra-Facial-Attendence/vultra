@@ -5,10 +5,10 @@ import {
   FastifyAdapter,
   type NestFastifyApplication,
 } from '@nestjs/platform-fastify';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { Logger } from 'nestjs-pino';
 import { AppModule } from './app.module.js';
-import type { Environment } from './core/environment.js';
+import type { Environment } from '@core/config/environment.js';
+import { setUpApp } from '@core/setup.js';
 
 const app = await NestFactory.create<NestFastifyApplication>(
   AppModule,
@@ -16,12 +16,7 @@ const app = await NestFactory.create<NestFastifyApplication>(
   { bufferLogs: true },
 );
 app.useLogger(app.get(Logger));
-
-const document = SwaggerModule.createDocument(
-  app,
-  new DocumentBuilder().setTitle('Vultra API').build(),
-);
-SwaggerModule.setup('docs', app, document, { jsonDocumentUrl: 'docs/json' });
+setUpApp(app);
 
 const config = app.get<ConfigService<Environment, true>>(ConfigService);
 await app.listen(

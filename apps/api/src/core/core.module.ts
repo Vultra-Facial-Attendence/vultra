@@ -3,9 +3,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TerminusModule } from '@nestjs/terminus';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { LoggerModule } from 'nestjs-pino';
-import { environmentSchema, type Environment } from './environment.js';
-import { HealthController } from './health.controller.js';
-import { pinoHttpOptions } from './logger.js';
+import { environmentSchema, type Environment } from './config/environment.js';
+import { HealthController } from './health/health.controller.js';
+import { pinoHttpOptions } from './logger/logger.js';
 
 @Module({
   imports: [
@@ -21,6 +21,7 @@ import { pinoHttpOptions } from './logger.js';
         type: 'postgres',
         url: config.get('DATABASE_URL', { infer: true }),
         autoLoadEntities: true,
+        retryAttempts: 0,
       }),
     }),
     TerminusModule,

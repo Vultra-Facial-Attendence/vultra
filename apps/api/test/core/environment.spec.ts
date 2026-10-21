@@ -1,6 +1,6 @@
 import { ConfigModule } from '@nestjs/config';
 import { expect, test, vi } from 'vitest';
-import { environmentSchema } from '../src/core/environment.js';
+import { environmentSchema } from '@core/config/environment.js';
 
 test('refuses to start without DATABASE_URL', async () => {
   vi.stubEnv('API_HOST', '127.0.0.1');

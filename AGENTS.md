@@ -16,8 +16,9 @@ Antes de afirmar que algo existe, confira aqui. O repositório começou do zero 
 - Há o SRS 1.0.0, o pré-registro do artigo e os ADRs 0001 a 0004.
 - O firmware de bancada (`esp32-cam`) e o `apps/worker`, que só baixa os modelos, vieram do repositório
   anterior sem mudança.
-- O `apps/api` tem só o esqueleto: ambiente validado, conexão com o banco, log redigido, `GET /health` e
-  `/docs`. Nenhum módulo de área existe ainda.
+- O `apps/api` tem o ambiente validado, a conexão com o banco, o log redigido, `GET /health`, `/docs` e o
+  módulo `access`: login do gestor por sessão, guard global que nega por padrão e o comando
+  `manager:create`. Os outros módulos de área ainda não existem.
 - O `infra/compose.dev.yaml` sobe só o PostgreSQL. O Redis entra no épico C.
 - `apps/web` e `proto` ainda não existem.
 - Não existe workflow de CI. O ADR 0003 decidiu que ele existirá.
@@ -94,10 +95,14 @@ docs/research    pré-registro e harness do artigo
 ```
 
 `apps/api` tem um módulo Nest por área do SRS: `registry`, `devices`, `biometrics`, `recognition`,
-`affective`, `access`, `governance` e `attendance`. Ambiente, banco, Redis e log ficam em `src/core`. Os
-arquivos seguem a nomenclatura do Nest CLI (`*.module.ts`, `*.controller.ts`, `*.service.ts`,
-`*.entity.ts`). Uma classe de repository só existe quando a consulta não cabe no `Repository` do TypeORM
-injetado. Um módulo usa outro apenas pelo que esse outro declara em `exports`.
+`affective`, `access`, `governance` e `attendance`, cada um em `src/modules/<área>`. Ambiente, banco, Redis
+e log ficam em `src/core`, e o que mais de um módulo usa fica em `src/common`. Dentro do módulo, cada papel
+tem a sua pasta (`controllers/`, `services/`, `entities/`, `dto/`, `repositories/`, `commands/`…), mesmo com
+um arquivo só. Os arquivos seguem a nomenclatura do Nest CLI (`*.module.ts`, `*.controller.ts`,
+`*.service.ts`, `*.entity.ts`). Uma classe de repository só existe quando a consulta não cabe no
+`Repository` do TypeORM injetado. Um módulo usa outro apenas pelo que esse outro declara em `exports`. Um
+import que sai da área usa os aliases `@modules/*`, `@core/*` e `@common/*`. Dentro da área o import é
+relativo.
 
 Regras de fronteira:
 
@@ -115,8 +120,9 @@ Onde vai um arquivo novo:
 
 | O que é | Onde |
 | --- | --- |
-| Rota, regra ou consulta de uma área do SRS | o módulo da área em `apps/api/src` |
+| Rota, regra ou consulta de uma área do SRS | a pasta do papel em `apps/api/src/modules/<área>` |
 | Ambiente, conexão de banco ou de Redis, log | `apps/api/src/core` |
+| Peça usada por mais de um módulo da API | `apps/api/src/common` |
 | Etapa de inferência ou carga de modelo | `apps/worker` |
 | Mensagem ou serviço entre a API e o worker | `proto` |
 | Tela | `apps/web/src/app` |

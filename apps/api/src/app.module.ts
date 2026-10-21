@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
-import { CoreModule } from './core/core.module.js';
+import { AccessModule } from '@modules/access/access.module.js';
+import { CoreModule } from '@core/core.module.js';
 
 @Module({
-  imports: [CoreModule],
+  imports: [CoreModule, AccessModule],
 })
 export class AppModule {}

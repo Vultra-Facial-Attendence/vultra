@@ -3,10 +3,16 @@ import {
   type NestFastifyApplication,
 } from '@nestjs/platform-fastify';
 import { Test } from '@nestjs/testing';
-import { PostgreSqlContainer } from '@testcontainers/postgresql';
-import { expect, test, vi } from 'vitest';
+import {
+  PostgreSqlContainer,
+  type StartedPostgreSqlContainer,
+} from '@testcontainers/postgresql';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+import { vi } from 'vitest';
+import { setUpApp } from '@core/setup.js';
 
-test('reports the database as up, then as down', async () => {
+export async function startDatabase(): Promise<StartedPostgreSqlContainer> {
   const container = await new PostgreSqlContainer(
     'pgvector/pgvector:0.8.7-pg18-trixie',
   ).start();
@@ -14,24 +20,23 @@ test('reports the database as up, then as down', async () => {
   vi.stubEnv('API_PORT', '3000');
   vi.stubEnv('DATABASE_URL', container.getConnectionUri());
   vi.stubEnv('MIGRATIONS_DATABASE_URL', container.getConnectionUri());
-  const { AppModule } = await import('../src/app.module.js');
+  await promisify(execFile)('bun', ['run', 'migration:run']);
+  return container;
+}
+
+export async function createApp(
+  beforeSetUp?: (app: NestFastifyApplication) => void,
+): Promise<NestFastifyApplication> {
+  const { AppModule } = await import('../../src/app.module.js');
   const moduleRef = await Test.createTestingModule({
     imports: [AppModule],
   }).compile();
   const app = moduleRef.createNestApplication<NestFastifyApplication>(
     new FastifyAdapter(),
   );
+  beforeSetUp?.(app);
+  setUpApp(app);
   await app.init();
   await app.getHttpAdapter().getInstance().ready();
-
-  const up = await app.inject({ method: 'GET', url: '/health' });
-  expect(up.statusCode).toBe(200);
-  expect(up.json()).toMatchObject({ status: 'ok' });
-
-  await container.stop();
-  const down = await app.inject({ method: 'GET', url: '/health' });
-  expect(down.statusCode).toBe(503);
-  expect(down.json()).toMatchObject({ status: 'error' });
-
-  await app.close();
-}, 120_000);
+  return app;
+}

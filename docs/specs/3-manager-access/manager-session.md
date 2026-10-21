@@ -2,7 +2,7 @@
 
 > **Status:** published
 > **Perfil:** API
-> **Módulo:** `apps/api/src/access` e `apps/api/src/core`
+> **Módulo:** `apps/api/src/modules/access` e `apps/api/src/core`
 > **Épico:** [#3](https://github.com/Vultra-Facial-Attendence/vultra/issues/3)
 > **Requisitos:** FR-ACC-01, NFR-SEC-03, NFR-SEC-04, NFR-SEC-05
 > **Sprint:** 1
@@ -458,5 +458,5 @@ E o job do `apps/api` roda os gates da área e falha se algum falhar
 | # | Issue | Título | Escopo | Critério de aceite | Depende de |
 | --- | --- | --- | --- | --- | --- |
 | 1 | [#9](https://github.com/Vultra-Facial-Attendence/vultra/issues/9) | Criar o esqueleto do `apps/api` com ambiente obrigatório, log redigido e saúde | `package.json` da raiz com os workspaces e `bun.lock`; `apps/api` com `package.json`, `tsconfig`, `nest-cli.json`, oxlint, prettier, Vitest, `.env.example`, `src/main.ts`, `src/app.module.ts` e `src/core` (ambiente, TypeORM, log, saúde, data source das migrations); `infra/compose.dev.yaml`, script de init do papel da API e `infra/.env.example`; `apps/api/AGENTS.md`, linha da API no `AGENTS.md` da raiz e tarefas do `.vscode`; testes do ambiente, da saúde e da redação do log. Cerca de 24 arquivos | Cenários 10, 11 (redação dos cabeçalhos) e 12 | — |
-| 2 | [#10](https://github.com/Vultra-Facial-Attendence/vultra/issues/10) | Autenticar o gestor por sessão e negar toda rota de dado sem ela | `src/access`: módulo, entidades `Manager` e `ManagerSession`, `SessionStore` no PostgreSQL, provider de sessão, controller e service de `/session`; limite de login; `app.enableCsrfProtection()`; primeira migration; comando `manager:create`; testes do login, da negação por padrão, do contrato do store com `authenticationStoreContract()` e do comando. Cerca de 15 arquivos | Cenários 1 a 9, 11 (fluxo completo), 13 e 14 | 1 |
+| 2 | [#10](https://github.com/Vultra-Facial-Attendence/vultra/issues/10) | Autenticar o gestor por sessão e negar toda rota de dado sem ela | `src/modules/access`: módulo, entidades `Manager` e `ManagerSession`, `ManagerSessionRepository` (o `SessionStore` no PostgreSQL), provider de sessão, controller e service de `/session`; limite de login; `app.enableCsrfProtection()`; primeira migration; comando `manager:create`; testes do login, da negação por padrão, do log do fluxo completo e do comando. Cerca de 26 arquivos | Cenários 1 a 9, 11 (fluxo completo), 13 e 14 | 1 |
 | 3 | [#11](https://github.com/Vultra-Facial-Attendence/vultra/issues/11) | Rodar os gates do `apps/api` e o `gitleaks` no CI | `.github/workflows/api.yml`, com filtro de caminho em `apps/api/**`, e `.github/workflows/secrets.yml`, com a imagem `ghcr.io/gitleaks/gitleaks:v8.30.1` sobre o histórico; linha do CI em `deployment.md`. Cerca de 4 arquivos | Cenário 15 | 2 |
