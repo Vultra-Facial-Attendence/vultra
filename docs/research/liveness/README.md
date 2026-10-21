@@ -77,8 +77,8 @@ uv run --no-project --python 3.13 \
 | `4_0_0_80x80_MiniFASNetV1SE.pth` | `84ee1d37d96894d5e82de5a57df044ef80a58be2b218b5ed7cdfd875ec2f5990` | 20 | `ab4c068865ebcf83b8ef86b022cc0ccbe58d0c584091a0a8005af7b716d90afa` | 2,027e-06 |
 
 As duas ficam abaixo da tolerância de `1e-4`. Os dois ONNX desta tabela são os da reconversão de
-2026-10-09 em Linux, com o `torch` do índice de CPU, e são os destinados à Release `models-v1` deste
-repositório, ainda não publicada. A conversão foi repetida a partir de outra pasta e gerou os mesmos dois SHA-256. A igualdade
+2026-10-09 em Linux, com o `torch` do índice de CPU, e são os publicados na Release `models-v1` deste
+repositório, em 2026-10-21. A conversão foi repetida a partir de outra pasta e gerou os mesmos dois SHA-256. A igualdade
 do SHA-256 entre sistemas operacionais não foi medida: o arquivo de referência é o da Release.
 
 A primeira conversão, feita no Windows antes de o script remover os metadados, gerou

@@ -8,9 +8,7 @@ API. Soma-se ao `AGENTS.md` da raiz e não o contradiz.
 Existem o projeto `uv`, com as cinco bibliotecas de inferência instaladas, e o comando `download-models`,
 importados do repositório anterior sem mudança de código. `process_frame` não existe: nenhuma etapa de
 inferência foi escrita, e nenhum código importa ainda as bibliotecas de inferência. O servidor gRPC e o
-`grpcio` do [ADR 0001](../../docs/decisions/0001-stack-do-backend.md) também não. A Release `models-v1`
-deste repositório ainda não foi publicada: até lá, o `download-models` falha com `HTTPError 404` no
-primeiro ONNX do MiniFASNet. Não há teste nem pasta `tests/`.
+`grpcio` do [ADR 0001](../../docs/decisions/0001-stack-do-backend.md) também não. Não há teste nem pasta `tests/`.
 
 ## Stack
 
