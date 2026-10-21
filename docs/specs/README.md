@@ -6,4 +6,4 @@ virar issues e diz exatamente o que o código precisa fazer.
 | Épico | Spec | Perfil | Status |
 | --- | --- | --- | --- |
 | [#3](https://github.com/Vultra-Facial-Attendence/vultra/issues/3) · Acesso do gestor | [A-01 — Autenticar o gestor na API](3-manager-access/manager-session.md) | API | published |
-| [#4](https://github.com/Vultra-Facial-Attendence/vultra/issues/4) · Pipeline de inferência de um quadro | [B-01 — Processar um quadro no worker](4-frame-inference/frame-inference.md) | API | closed |
+| [#4](https://github.com/Vultra-Facial-Attendence/vultra/issues/4) · Pipeline de inferência de um quadro | [B-01 — Processar um quadro no worker](4-frame-inference/frame-inference.md) | API | published |

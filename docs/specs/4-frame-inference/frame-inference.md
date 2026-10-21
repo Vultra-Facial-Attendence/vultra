@@ -1,6 +1,6 @@
 # B-01 — Processar um quadro no worker
 
-> **Status:** closed
+> **Status:** published
 > **Perfil:** API
 > **Módulo:** `apps/worker`, `proto` e `apps/api/src/common/inference`
 > **Épico:** [#4](https://github.com/Vultra-Facial-Attendence/vultra/issues/4)
@@ -603,9 +603,9 @@ domínios que o #6 vai gravar no evento de reconhecimento.
 
 ## Tarefas
 
-| # | Título | Escopo | Critério de aceite | Depende de |
-| --- | --- | --- | --- | --- |
-| 1 | Serve accepted frames over the inference contract | `proto/vultra/inference/v1/inference.proto`, `proto/buf.yaml`, `apps/worker/pipeline/contract/` (gerado), `pipeline/server.py`, `pipeline/models.py`, `pipeline/process_frame.py`, `pipeline/detection.py`, `pipeline/vector.py`, `pyproject.toml`, `uv.lock`, `.env.example`, `apps/worker/AGENTS.md`, `tests/`, `.github/workflows/worker.yml`, cerca de 16 arquivos | Cenários 2, 3, 4, 5, 9, 10, 11, 12, 13 (lado do worker) e 17 | — |
-| 2 | Call the worker from the API with a deadline | `apps/api/buf.gen.yaml`, `src/common/inference/contract/` (gerado), `inference.module.ts`, `inference.client.ts`, `src/core/config/environment.ts`, `.env.example`, `package.json`, `bun.lock`, `nest-cli.json`, `test/common/inference.spec.ts`, `apps/api/AGENTS.md`, `.github/workflows/api.yml`, cerca de 13 arquivos | Cenários 13 (lado da API), 14, 15 e 16 | 1 |
-| 3 | Refuse frames by quality and liveness | `pipeline/quality.py`, `pipeline/liveness.py`, `pipeline/process_frame.py`, `tests/` | Cenários 6 e 7 | 1 |
-| 4 | Infer the facial expression on recognition | `pipeline/emotion.py`, `pipeline/process_frame.py`, `tests/` | Cenários 1 e 8 | 3 |
+| # | Issue | Título | Escopo | Critério de aceite | Depende de |
+| --- | --- | --- | --- | --- | --- |
+| 1 | [#13](https://github.com/Vultra-Facial-Attendence/vultra/issues/13) | Servir quadros aceitos pelo contrato de inferência | `proto/vultra/inference/v1/inference.proto`, `proto/buf.yaml`, `apps/worker/pipeline/contract/` (gerado), `pipeline/server.py`, `pipeline/models.py`, `pipeline/process_frame.py`, `pipeline/detection.py`, `pipeline/vector.py`, `pyproject.toml`, `uv.lock`, `.env.example`, `apps/worker/AGENTS.md`, `tests/`, `.github/workflows/worker.yml`, cerca de 16 arquivos | Cenários 2, 3, 4, 5, 9, 10, 11, 12, 13 (lado do worker) e 17 | — |
+| 2 | [#14](https://github.com/Vultra-Facial-Attendence/vultra/issues/14) | Chamar o worker pela API com prazo | `apps/api/buf.gen.yaml`, `src/common/inference/contract/` (gerado), `inference.module.ts`, `inference.client.ts`, `src/core/config/environment.ts`, `.env.example`, `package.json`, `bun.lock`, `nest-cli.json`, `test/common/inference.spec.ts`, `apps/api/AGENTS.md`, `.github/workflows/api.yml`, cerca de 13 arquivos | Cenários 13 (lado da API), 14, 15 e 16 | 1 |
+| 3 | [#15](https://github.com/Vultra-Facial-Attendence/vultra/issues/15) | Recusar quadros por qualidade e vivacidade | `pipeline/quality.py`, `pipeline/liveness.py`, `pipeline/process_frame.py`, `tests/` | Cenários 6 e 7 | 1 |
+| 4 | [#16](https://github.com/Vultra-Facial-Attendence/vultra/issues/16) | Inferir a expressão facial no reconhecimento | `pipeline/emotion.py`, `pipeline/process_frame.py`, `tests/` | Cenários 1 e 8 | 3 |
