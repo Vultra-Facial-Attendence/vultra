@@ -87,7 +87,7 @@ As rotas `GET /session`, `DELETE /session` e `GET /health` não têm corpo.
 **`GET /health` → `200 OK`**
 
 ```json
-{ "status": "ok", "info": { "database": { "status": "up" } }, "error": {}, "details": { "database": { "status": "up" } } }
+{ "status": "ok", "info": { "database": { "responseTime": 1, "status": "up" } }, "error": {}, "details": { "database": { "responseTime": 1, "status": "up" } } }
 ```
 
 | Campo da resposta | Tipo | Origem |

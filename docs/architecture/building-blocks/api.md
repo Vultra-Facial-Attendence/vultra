@@ -1,7 +1,7 @@
 # API
 
-`apps/api` · NestJS 12 sobre Fastify, Node 26 · estágio E1, com o módulo `attendance` no E2 · ainda
-não existe.
+`apps/api` · NestJS 12 sobre Fastify, Node 26 · estágio E1, com o módulo `attendance` no E2 · existe o
+esqueleto em `src/core`, sem módulo de área.
 
 ## O que faz
 

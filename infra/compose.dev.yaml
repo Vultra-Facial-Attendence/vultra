@@ -1,0 +1,19 @@
+name: vultra
+
+services:
+  postgres:
+    image: pgvector/pgvector:0.8.7-pg18-trixie
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?}
+      POSTGRES_DB: ${POSTGRES_DB:?}
+      API_DB_USER: ${API_DB_USER:?}
+      API_DB_PASSWORD: ${API_DB_PASSWORD:?}
+    ports:
+      - 127.0.0.1:${POSTGRES_HOST_PORT:?}:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql
+      - ./postgres/create-api-role.sh:/docker-entrypoint-initdb.d/create-api-role.sh:ro
+
+volumes:
+  postgres-data:

@@ -1,7 +1,7 @@
 # PostgreSQL
 
 Imagem `pgvector/pgvector:0.8.7-pg18-trixie` · estágio E1 · no ambiente de desenvolvimento sobe pelo
-`infra/compose.dev.yaml`, que ainda não existe.
+`infra/compose.dev.yaml`.
 
 ## O que faz
 
@@ -20,6 +20,8 @@ com pgvector.
 - A versão do pgvector é fixada por tag exata, para o experimento do artigo poder ser reproduzido.
 - Há dois papéis de banco: o da API, sem superusuário, e o das migrations, que cria a extensão `vector`
   ([0001](../../decisions/0001-stack-do-backend.md)).
-- No ambiente local, um script de init do compose cria o papel da API sem superusuário. O papel do
-  `POSTGRES_USER` é o das migrations ([spec do acesso do gestor](../../specs/3-manager-access/manager-session.md)).
+- No ambiente local, o script de init do compose (`infra/postgres/create-api-role.sh`) cria o papel da
+  API sem superusuário e dá a ele leitura e escrita nas tabelas que o papel das migrations criar. O papel
+  do `POSTGRES_USER` é o das migrations. Na produção, o papel é criado no épico E
+  ([spec do acesso do gestor](../../specs/3-manager-access/manager-session.md)).
 - As tabelas e as chaves estão em [../../data-model/](../../data-model/README.md).
