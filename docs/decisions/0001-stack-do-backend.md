@@ -41,7 +41,7 @@ de tipos. O build e os testes são do ecossistema do Node.
 | Runtime | Node 26 (LTS a partir de 2026-10-28) |
 | Gerenciador de pacotes | Bun 1.4.3 (`bun install`, `bun.lock`) |
 | Verificação de tipos | `bun check` |
-| Build | `@nestjs/cli` 12.0.9 com `typescript` 6.0.3 |
+| Build | `@nestjs/cli` 12.0.10 e `@nestjs/schematics` 12.0.10, com `typescript` 6.0.3 |
 | Testes | Vitest 5.0.5, com Testcontainers para PostgreSQL e Redis |
 | Lint e formatação | `oxlint` 1.89.0 com `oxlint-tsgolint` 7.0.2004, `prettier` 3.9.10 |
 
@@ -53,10 +53,10 @@ Bibliotecas do serviço, todas com versão exata:
 | HTTP | `@nestjs/platform-fastify` 12.2.0 |
 | Upload de arquivo | `@fastify/multipart` 10.1.4 |
 | Validação e esquemas | `zod` 4.6.7, pelo `StandardSchemaValidationPipe` do Nest |
-| Configuração | `@nestjs/config` 12.0.1, com o ambiente validado por esquema `zod` |
+| Configuração | `@nestjs/config` 12.0.1, com o ambiente validado por esquema `zod`, e `dotenv` 18.0.8 nos pontos de entrada |
 | Autenticação | `@nestjs/authentication` 0.1.1: sessão por cookie para o gestor, chave de API para câmeras |
 | Autorização | `@nestjs/authorization` 0.1.0: política por rota, nega por padrão |
-| Banco | `@nestjs/typeorm` 12.0.2, `typeorm` 1.1.2, `pg` 8.23.1, coluna `vector` nativa |
+| Banco | `@nestjs/typeorm` 12.0.2, `typeorm` 1.1.2, `pg` 8.23.1, coluna `vector` nativa, `ts-node` 10.9.2 para o CLI de migrations |
 | Redis | `ioredis` 6.0.0 |
 | Cota | `@nestjs/throttler` 6.7.1, com armazenamento próprio no Redis |
 | Canal da câmera | `@nestjs/websockets` 12.2.0, `@nestjs/platform-ws` 12.2.0, `ws` 8.22.0 |

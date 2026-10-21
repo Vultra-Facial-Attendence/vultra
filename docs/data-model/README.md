@@ -18,7 +18,8 @@ migrations aplicadas, e o lógico é derivado dele.
 
 | Entidade | O que é uma instância | Estágio |
 | --- | --- | --- |
-| Gestor | Quem autentica e opera o sistema | E1 |
+| Gestor | Quem autentica e opera o sistema: e-mail, hash da senha e data de criação | E1 |
+| Sessão do gestor | Um login aberto num navegador, com expiração absoluta e por inatividade | E1 |
 | Pessoa | Alguém que pode ter o rosto cadastrado: identificador externo e nome | E1 |
 | Câmera | Uma ESP32-CAM registrada, com chave própria | E1 |
 | Cadastro biométrico | O vínculo entre uma pessoa e o vetor do rosto dela | E1 |
@@ -30,6 +31,8 @@ A presença é a relação entre Sessão de chamada e Pessoa, com o instante. El
 
 ## Invariantes
 
+- O e-mail de um gestor é único e guardado em minúsculas.
+- Uma sessão do gestor guarda só o SHA-256 do token, e some quando o gestor é apagado.
 - Uma pessoa tem no máximo um cadastro biométrico.
 - Revogar o cadastro deixa o vetor irrecuperável
   ([FR-BIO-04](../requirements/functional/biometrics.md#fr-bio-04)).

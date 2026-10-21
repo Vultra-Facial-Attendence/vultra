@@ -16,6 +16,31 @@
         "cwd": "${workspaceFolder}/apps/worker"
       },
       "problemMatcher": []
+    },
+    {
+      "label": "api: check",
+      "type": "shell",
+      "command": "bun run check",
+      "options": {
+        "cwd": "${workspaceFolder}/apps/api"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "api: dev",
+      "type": "shell",
+      "command": "bun run dev",
+      "isBackground": true,
+      "options": {
+        "cwd": "${workspaceFolder}/apps/api"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "infra: up",
+      "type": "shell",
+      "command": "docker compose -f infra/compose.dev.yaml --env-file infra/.env up -d",
+      "problemMatcher": []
     }
   ]
 }

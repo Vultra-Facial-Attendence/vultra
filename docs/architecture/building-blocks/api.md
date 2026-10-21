@@ -1,7 +1,7 @@
 # API
 
-`apps/api` · NestJS 12 sobre Fastify, Node 26 · estágio E1, com o módulo `attendance` no E2 · ainda
-não existe.
+`apps/api` · NestJS 12 sobre Fastify, Node 26 · estágio E1, com o módulo `attendance` no E2 · existe o
+esqueleto em `src/core` e o módulo `access` em `src/modules/access`.
 
 ## O que faz
 
@@ -18,11 +18,14 @@ ao [Worker](worker.md), compara o vetor com a galeria e grava o resultado.
 
 ![Componentes da API](../diagrams/components-api.drawio.svg)
 
-Ambiente, banco, Redis e log ficam em `src/core`. Cada área do SRS é um módulo Nest.
+Ambiente, banco, Redis, log e a rota de saúde ficam em `src/core`. Cada área do SRS é um módulo Nest em
+`src/modules/<área>`, e o que mais de um módulo usa fica em `src/common`.
+A política por rota do `@nestjs/authorization` entra quando existir um segundo papel ou uma regra por
+recurso. Até lá o guard global do `@nestjs/authentication` basta, porque há um papel só.
 
 | Módulo | Responsabilidade | Requisitos | Estágio |
 | --- | --- | --- | --- |
-| `access` | Login e sessão do gestor, política de autorização | FR-ACC-01, NFR-SEC-03 | E1 |
+| `access` | Login e sessão do gestor, com o guard global que nega por padrão ([spec](../../specs/3-manager-access/manager-session.md)) | FR-ACC-01, NFR-SEC-03 | E1 |
 | `registry` | Pessoas | FR-REG-01 | E1 |
 | `devices` | Câmeras, chaves, canal WebSocket e disparo de captura | FR-DEV-01 a 04, NFR-SEC-01, NFR-SEC-02 | E1 |
 | `biometrics` | Cadastro biométrico e revogação | FR-BIO-01 a 04 | E1 |
