@@ -5,9 +5,10 @@
 
 ## Contexto
 
-O painel é usado por gestores e professores, sempre depois do login, e não precisa de SEO. A chamada
-é feita com o celular na mão, então toda tela precisa funcionar em 390 px de largura. Os estados de
-carregamento não podem deslocar o layout, e todo controle precisa funcionar pelo teclado.
+O painel é a tela da demonstração. O gestor entra, abre uma sessão de chamada numa câmera e acompanha
+ao vivo as presenças e a expressão facial de cada captura. Ele é usado sempre depois do login e não
+precisa de SEO. Toda tela funciona em 390 px de largura, os estados de carregamento não deslocam o
+layout, e todo controle funciona pelo teclado.
 
 A API ([0001](0001-stack-do-backend.md)) autentica pessoas por um cookie de sessão `__Host-sid` e
 recusa escrita vinda de outro site pela proteção de CSRF do Nest 12. Por isso o painel e a API
@@ -31,8 +32,7 @@ instala os pacotes e checa os tipos, como no backend.
 | Necessidade | Pacote e versão |
 | --- | --- |
 | Framework | `next` 16.4.2 (Turbopack, saída `standalone`), `react` / `react-dom` 19.3.1 |
-| Componentes | `@mantine/core`, `@mantine/hooks`, `@mantine/form`, `@mantine/notifications`, `@mantine/dates`, `@mantine/charts` 9.7.3 |
-| Dependências do Mantine | `recharts` 3.10.1, `dayjs` 1.11.23 |
+| Componentes | `@mantine/core`, `@mantine/hooks`, `@mantine/form`, `@mantine/notifications` 9.7.3 |
 | Estilo próprio | CSS Modules com nesting nativo, processado pelo Lightning CSS do Turbopack, sem PostCSS |
 | Cliente da API | `openapi-typescript` 7.13.0 (tipos gerados do `openapi.json` do Nest), `openapi-fetch` 0.17.0 |
 | Validação | `zod` 4.6.7, pelo `schemaResolver` do `@mantine/form` |
@@ -51,7 +51,7 @@ O fluxo de dados segue a prova feita antes deste ADR:
   `API_URL` a cada requisição.
 - Contrato: o `@nestjs/swagger` 12 converte os schemas zod de entrada e de saída para o
   `openapi.json`, e o `openapi-typescript` gera os tipos do painel a partir dele.
-- Chamada aberta: atualiza por polling com `router.refresh()`.
+- Sessão aberta: a tela ao vivo atualiza por polling com `router.refresh()`.
 
 ## Consequências
 
@@ -78,7 +78,7 @@ O fluxo de dados segue a prova feita antes deste ADR:
   intermediária. Além disso, uma exceção lançada numa action perde a mensagem em produção.
 - `rewrites` do `next.config`: grava o endereço da API no build.
 - Tailwind com shadcn: descartado por preferência do time.
-- Radix Themes: tem menos componentes e não traz formulário, gráfico nem datas.
+- Radix Themes: tem menos componentes e não traz formulário.
 - CSS Modules com Base UI: todo o estilo seria escrito à mão.
 - Panda CSS: a escrita continua no estilo de classes utilitárias.
 - MUI e Chakra: dependem do Emotion em runtime.

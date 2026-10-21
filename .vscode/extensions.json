@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "oxc.oxc-vscode",
+    "esbenp.prettier-vscode",
+    "charliermarsh.ruff",
+    "ms-python.python",
+    "bufbuild.vscode-buf",
+    "espressif.esp-idf-extension",
+    "hediet.vscode-drawio"
+  ]
+}
