@@ -40,7 +40,9 @@ privilegiado do banco.
 - O CI roda os gates de cada área no GitHub Actions, com filtro de caminho
   ([0003](../decisions/0003-repositorio-e-infraestrutura.md)). O `api.yml` roda o `check` e o `build`
   do `apps/api` em todo Pull Request que muda a área, o `bun.lock` ou o `package.json` da raiz. O
-  `secrets.yml` roda o `gitleaks` sobre o histórico inteiro em todo Pull Request. As outras áreas ainda
-  não têm workflow.
+  `secrets.yml` roda o `gitleaks` sobre o histórico inteiro em todo Pull Request. No E1, o `api.yml`
+  passa a disparar também com `proto/**`, com o `buf lint` e a conferência do código gerado, e o
+  `worker.yml` roda os gates do `apps/worker`, o `pytest` com os modelos em cache e a mesma conferência
+  ([spec](../specs/4-frame-inference/frame-inference.md)). O firmware ainda não tem workflow.
 - As branches não têm proteção configurada. A regra de Pull Request é uma convenção.
 - As dependências são atualizadas à mão, com `bun outdated` e `uv`.

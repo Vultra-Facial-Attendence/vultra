@@ -36,7 +36,10 @@ recurso. Até lá o guard global do `@nestjs/authentication` basta, porque há u
 
 ## Para mudar com segurança
 
-- A chamada ao Worker leva um prazo. A chamada vencida vira desfecho registrado
+- A chamada ao Worker passa pelo `InferenceClient` de `src/common/inference`, que o `biometrics` e o
+  `recognition` usam, com o endereço em `WORKER_ADDRESS` e os tipos gerados de `proto/`
+  ([spec](../../specs/4-frame-inference/frame-inference.md)). E1.
+- A chamada ao Worker leva um prazo de 2000 ms. A chamada vencida vira desfecho registrado
   ([NFR-PERF-01](../../requirements/non-functional/performance.md#nfr-perf-01)), e o resto da API segue
   atendendo ([NFR-REL-01](../../requirements/non-functional/reliability.md#nfr-rel-01)).
 - A chave da câmera é conferida no handshake e em cada mensagem. Uma chave revogada fecha a conexão com

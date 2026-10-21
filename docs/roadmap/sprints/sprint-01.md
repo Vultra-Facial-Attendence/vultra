@@ -9,3 +9,7 @@
 A [OQ-01](../../requirements/open-questions.md#oq-01) pedia fechamento antes de o E1 entrar em sprint.
 Este sprint só constrói o Acesso do gestor, que serve a qualquer enquadramento do artigo, e a OQ-01
 fecha com o orientador antes do Sprint 2.
+
+Em 2026-10-21, com o objetivo já entregue, o
+[#4](https://github.com/Vultra-Facial-Attendence/vultra/issues/4) entrou no sprint, com a spec antes do
+código. O pipeline do worker não depende do enquadramento do artigo, que é o que a OQ-01 decide.
