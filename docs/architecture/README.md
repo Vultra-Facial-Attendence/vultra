@@ -40,7 +40,7 @@ Estão na seção Restrições da [visão geral dos requisitos](../requirements/
 | --- | --- | --- |
 | API em NestJS sobre Fastify, no Node 26, com um módulo por área do SRS | O framework já traz validação, autenticação, autorização, gRPC, WebSocket e OpenAPI | [0001](../decisions/0001-stack-do-backend.md) |
 | Inferência num worker Python separado, chamado por gRPC | As bibliotecas de visão são Python, e o quadro vai por chamada direta, sem passar por fila | [0001](../decisions/0001-stack-do-backend.md) |
-| Câmera ligada à API por WebSocket sobre TLS | Uma conexão aberta recebe o comando de captura e devolve o quadro | [0001](../decisions/0001-stack-do-backend.md) |
+| Câmera ligada à API por WebSocket sobre TLS | Uma conexão aberta recebe o comando de captura e devolve o quadro | [0004](../decisions/0004-canal-da-camera-por-websocket.md) |
 | PostgreSQL com pgvector | A comparação 1:N acontece no banco | [0003](../decisions/0003-repositorio-e-infraestrutura.md) |
 | Painel em Next.js que lê no servidor e escreve pela mesma origem | Login por cookie e tela ao vivo sem camada intermediária | [0002](../decisions/0002-stack-do-frontend.md) |
 | Um Dockerfile por app, TLS na borda em produção | Os mesmos artefatos rodam nos dois ambientes | [0003](../decisions/0003-repositorio-e-infraestrutura.md) |

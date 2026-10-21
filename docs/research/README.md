@@ -5,6 +5,7 @@ Artefatos do artigo que não fazem parte do sistema.
 | Arquivo | O que é |
 | --- | --- |
 | [pre-registro.md](pre-registro.md) | O desenho experimental, as hipóteses e a regra de decisão do experimento de busca vetorial multitenant, fixados antes de qualquer corrida |
+| [liveness/](liveness/README.md) | O levantamento dos modelos de vivacidade, com a conversão do MiniFASNet para ONNX e a medição de latência |
 
 ## Evidência do pré-registro
 

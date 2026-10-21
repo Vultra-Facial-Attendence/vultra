@@ -13,7 +13,7 @@ em `docs/decisions/`. Este arquivo diz como se trabalha aqui e não repete nenhu
 
 Antes de afirmar que algo existe, confira aqui. O repositório começou do zero em 2026-10-20.
 
-- Há o SRS 1.0.0, o pré-registro do artigo e os ADRs 0001 a 0003.
+- Há o SRS 1.0.0, o pré-registro do artigo e os ADRs 0001 a 0004.
 - O código se resume ao firmware de bancada (`esp32-cam`) e ao `apps/worker`, que só baixa os modelos.
   Os dois vieram do repositório anterior sem mudança. `apps/api`, `apps/web`, `proto` e `infra` ainda
   não existem.
@@ -31,7 +31,7 @@ Se um agente encontrar algum desses itens já resolvido, ele confere no reposit�
 | `apps/api` | NestJS 12 sobre Fastify, Node 26, TypeORM com pgvector, gRPC para o worker | [ADR 0001](docs/decisions/0001-stack-do-backend.md) |
 | `apps/web` | Next.js 16 com App Router, Node 26, Mantine 9 e CSS Modules | [ADR 0002](docs/decisions/0002-stack-do-frontend.md) |
 | `apps/worker` | Python 3.13 com `uv`, InsightFace e ONNX Runtime, servidor `grpc.aio` | [ADR 0001](docs/decisions/0001-stack-do-backend.md) |
-| `esp32-cam` | AI-Thinker ESP32-CAM, ESP-IDF 6.1 | repositório anterior |
+| `esp32-cam` | AI-Thinker ESP32-CAM, ESP-IDF 6.1, `esp_websocket_client` | [ADR 0004](docs/decisions/0004-canal-da-camera-por-websocket.md) |
 | Banco e Redis | PostgreSQL 18 com pgvector 0.8.7, Redis 8 | [ADR 0003](docs/decisions/0003-repositorio-e-infraestrutura.md) |
 | Monorepo | workspaces do Bun, um Dockerfile por app | [ADR 0003](docs/decisions/0003-repositorio-e-infraestrutura.md) |
 
