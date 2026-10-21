@@ -13,10 +13,10 @@ em `docs/decisions/`. Este arquivo diz como se trabalha aqui e não repete nenhu
 
 Antes de afirmar que algo existe, confira aqui. O repositório começou do zero em 2026-10-20.
 
-- Só há documentação: o SRS 1.0.0, o pré-registro do artigo e os ADRs 0001 a 0003. Nenhuma pasta de
-  código existe ainda.
-- O firmware (`esp32-cam`) e o pipeline de inferência vêm do repositório anterior sem mudança. Os dois
-  ainda não foram importados.
+- Há o SRS 1.0.0, o pré-registro do artigo e os ADRs 0001 a 0003.
+- O código se resume ao firmware de bancada (`esp32-cam`) e ao `apps/worker`, que só baixa os modelos.
+  Os dois vieram do repositório anterior sem mudança. `apps/api`, `apps/web`, `proto` e `infra` ainda
+  não existem.
 - Não existe workflow de CI. O ADR 0003 decidiu que ele existirá.
 - Nenhuma branch tem proteção configurada. A regra de branch abaixo é uma convenção.
 
@@ -71,8 +71,8 @@ Esta seção só lista comandos que já foram executados. Cada área com gates p
 | `docs` | `uvx zensical==0.0.71 build` (o site local abre com `uvx zensical==0.0.71 serve --open`) |
 | `apps/api` | pendente: a pasta não existe |
 | `apps/web` | pendente: a pasta não existe |
-| `apps/worker` | pendente: a pasta não existe |
-| `esp32-cam` | pendente: a pasta não existe |
+| `apps/worker` | `uv run ruff check`, `uv run ruff format --check`, `uv run mypy` ([AGENTS.md](apps/worker/AGENTS.md)) |
+| `esp32-cam` | `idf.py build`, e `uvx ruff check` e `uvx ruff format --check` no servidor de bancada ([AGENTS.md](esp32-cam/AGENTS.md)) |
 
 ---
 

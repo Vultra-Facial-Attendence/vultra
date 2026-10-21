@@ -1,8 +1,7 @@
 # Worker
 
-`apps/worker` · Python 3.13, `uv`, InsightFace, ONNX Runtime, servidor `grpc.aio` · estágio E1 · o
-pipeline vem do repositório anterior, onde existem o projeto e o download dos modelos. A inferência e
-o servidor gRPC ainda não existem.
+`apps/worker` · Python 3.13, `uv`, InsightFace, ONNX Runtime, servidor `grpc.aio` · estágio E1 · existem o
+projeto e o download dos modelos. A inferência e o servidor gRPC ainda não existem.
 
 ## O que faz
 

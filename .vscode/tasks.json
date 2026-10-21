@@ -7,6 +7,15 @@
       "command": "uvx zensical==0.0.71 serve --open",
       "isBackground": true,
       "problemMatcher": []
+    },
+    {
+      "label": "worker: gates",
+      "type": "shell",
+      "command": "uv run ruff check && uv run ruff format --check && uv run mypy",
+      "options": {
+        "cwd": "${workspaceFolder}/apps/worker"
+      },
+      "problemMatcher": []
     }
   ]
 }

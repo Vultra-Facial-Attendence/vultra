@@ -1,7 +1,7 @@
 # Câmera
 
-`esp32-cam` · AI-Thinker ESP32-CAM, firmware C++ sobre ESP-IDF 6.1 · estágio E1 · o firmware de
-bancada existe no repositório anterior e ainda não foi importado.
+`esp32-cam` · AI-Thinker ESP32-CAM, firmware C++ sobre ESP-IDF 6.1 · estágio E1 · existe o firmware de
+bancada, que envia um quadro a cada 2 s sem credencial nem comando de captura.
 
 ## O que faz
 
